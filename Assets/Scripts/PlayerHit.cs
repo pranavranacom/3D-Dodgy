@@ -3,12 +3,12 @@ using UnityEngine;
 public class PlayerHit : MonoBehaviour
 {
     private int hitCount = 0;
-
     void OnCollisionEnter(Collision collisionedObject)
     {
         Debug.Log("Player hit something: " + collisionedObject.gameObject.name);
 
-        if (collisionedObject.gameObject.name != "Land")
+        // if (collisionedObject.gameObject.name != "Land")
+        if (collisionedObject.gameObject.CompareTag("Obstacle"))
         {
             MeshRenderer collisionedObjectMeshRenderer = collisionedObject.gameObject.GetComponent<MeshRenderer>();
             Material collisionedObjectMaterial = collisionedObjectMeshRenderer.material;
