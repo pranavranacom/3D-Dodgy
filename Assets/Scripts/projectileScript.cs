@@ -15,6 +15,15 @@ public class projectileScript : MonoBehaviour
     void Update()
     {
         // Move the projectile towards the player at the specified speed                                
-       transform.position = Vector3.MoveTowards(transform.position, playerPosition, speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, playerPosition, speed * Time.deltaTime);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            // Destroy the projectile when it collides with the player
+            Destroy(gameObject);
+        }
     }
 }
